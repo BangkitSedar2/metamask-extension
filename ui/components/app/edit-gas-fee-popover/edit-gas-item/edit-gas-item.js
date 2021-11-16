@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import { getMaximumGasTotalInHexWei } from '../../../../../shared/modules/gas.utils';
 import { PRIORITY_LEVELS } from '../../../../../shared/constants/gas';
-import { GasLevelIconMap } from '../../../../helpers/constants/gas';
+import { PRIORITY_LEVEL_ICON_MAP } from '../../../../helpers/constants/gas';
 import { PRIMARY } from '../../../../helpers/constants/common';
 import {
   decGWEIToHexWEI,
@@ -33,7 +33,7 @@ const EditGasItem = ({ priorityLevel, onClose }) => {
     transaction: { dappSuggestedGasFees },
   } = useGasFeeContext();
   const t = useI18nContext();
-  const advanecGasFeeDefault = useSelector(getAdvancedGasFeeValues);
+  const advancedGasFeeValues = useSelector(getAdvancedGasFeeValues);
   let maxFeePerGas;
   let maxPriorityFeePerGas;
   let minWaitTime;
@@ -52,11 +52,11 @@ const EditGasItem = ({ priorityLevel, onClose }) => {
     if (estimateUsed === PRIORITY_LEVELS.CUSTOM) {
       maxFeePerGas = maxFeePerGasValue;
       maxPriorityFeePerGas = maxPriorityFeePerGasValue;
-    } else if (advanecGasFeeDefault) {
+    } else if (advancedGasFeeValues) {
       maxFeePerGas =
         gasFeeEstimates.estimatedBaseFee *
-        parseFloat(advanecGasFeeDefault.maxBaseFee);
-      maxPriorityFeePerGas = advanecGasFeeDefault.priorityFee;
+        parseFloat(advancedGasFeeValues.maxBaseFee);
+      maxPriorityFeePerGas = advancedGasFeeValues.priorityFee;
     }
   }
 
@@ -93,8 +93,8 @@ const EditGasItem = ({ priorityLevel, onClose }) => {
   return (
     <button
       className={classNames('edit-gas-item', {
-        [`edit-gas-item-selected`]: priorityLevel === estimateUsed,
-        [`edit-gas-item-disabled`]:
+        'edit-gas-item-selected': priorityLevel === estimateUsed,
+        'edit-gas-item-disabled':
           priorityLevel === PRIORITY_LEVELS.DAPP_SUGGESTED &&
           !dappSuggestedGasFees,
       })}
@@ -109,7 +109,7 @@ const EditGasItem = ({ priorityLevel, onClose }) => {
         <span
           className={`edit-gas-item__icon edit-gas-item__icon-${priorityLevel}`}
         >
-          {GasLevelIconMap[priorityLevel]}
+          {PRIORITY_LEVEL_ICON_MAP[priorityLevel]}
         </span>
         <I18nValue
           messageKey={

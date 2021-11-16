@@ -78,7 +78,7 @@ const EditGasFeePopover = ({ onClose }) => {
                     key="learnMoreLink"
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://community.metamask.io/t/what-is-gas-why-do-transactions-take-so-long/3172"
+                    href="https://metamask.zendesk.com/hc/en-us/articles/4404600179227-User-Guide-Gas"
                   >
                     <I18nValue messageKey="learnMore" />
                   </a>,
