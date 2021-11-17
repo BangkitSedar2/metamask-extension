@@ -27,23 +27,25 @@ export default function TransactionDetailItem({
         >
           {detailTitle}
         </Typography>
-        {detailText && (
+        <div className="transaction-detail-item__detail-values">
+          {detailText && (
+            <Typography
+              variant={TYPOGRAPHY.H6}
+              className="transaction-detail-item__detail-text"
+              color={COLORS.UI4}
+            >
+              {detailText}
+            </Typography>
+          )}
           <Typography
+            color={COLORS.BLACK}
+            fontWeight={FONT_WEIGHT.BOLD}
             variant={TYPOGRAPHY.H6}
-            className="transaction-detail-item__detail-text"
-            color={COLORS.UI4}
+            className="transaction-detail-item__total"
           >
-            {detailText}
+            {detailTotal}
           </Typography>
-        )}
-        <Typography
-          color={COLORS.BLACK}
-          fontWeight={FONT_WEIGHT.BOLD}
-          variant={TYPOGRAPHY.H6}
-          className="transaction-detail-item__total"
-        >
-          {detailTotal}
-        </Typography>
+        </div>
       </div>
       <div className="transaction-detail-item__row">
         {React.isValidElement(subTitle) ? (
