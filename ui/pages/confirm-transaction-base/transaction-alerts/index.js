@@ -1,1 +1,1 @@
-export { default } from './transaction-error-message';
+export { default } from './transaction-alerts';
