@@ -1,12 +1,13 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 
-import { renderWithProvider } from '../../../../test/jest';
 import { ETH } from '../../../helpers/constants/common';
+import { TRANSACTION_STATUSES } from '../../../../shared/constants/transaction';
+import { renderWithProvider } from '../../../../test/jest';
 import { GasFeeContextProvider } from '../../../contexts/gasFee';
 import configureStore from '../../../store/store';
 
-import TransactionErrorMessage from './transaction-error-message';
+import TransactionAlerts from './transaction-alerts';
 
 jest.mock('../../../store/actions', () => ({
   disconnectGasFeeEstimatePoller: jest.fn(),
@@ -16,7 +17,7 @@ jest.mock('../../../store/actions', () => ({
   addPollingTokenToAppState: jest.fn(),
 }));
 
-const render = (props) => {
+const render = (props, state) => {
   const store = configureStore({
     metamask: {
       nativeCurrency: ETH,
@@ -32,18 +33,19 @@ const render = (props) => {
         },
       },
       selectedAddress: '0xAddress',
+      ...state,
     },
   });
 
   return renderWithProvider(
     <GasFeeContextProvider {...props}>
-      <TransactionErrorMessage />
+      <TransactionAlerts />
     </GasFeeContextProvider>,
     store,
   );
 };
 
-describe('TransactionErrorMessage', () => {
+describe('TransactionAlerts', () => {
   it('should returning warning message for low gas estimate', () => {
     render({ transaction: { userFeeLevel: 'low' } });
     expect(
@@ -70,5 +72,24 @@ describe('TransactionErrorMessage', () => {
       transaction: { userFeeLevel: 'high', txParams: { value: '0x5208' } },
     });
     expect(screen.queryByText('Insufficient funds.')).toBeInTheDocument();
+  });
+
+  it('should show pending transaction message if there are >= 1 pending transactions', () => {
+    render(undefined, {
+      currentNetworkTxList: [
+        {
+          id: 0,
+          time: 0,
+          txParams: {
+            from: '0xAddress',
+            to: '0xRecipient',
+          },
+          status: TRANSACTION_STATUSES.SUBMITTED,
+        },
+      ],
+    });
+    expect(
+      screen.queryByText('You have (1) pending transaction(s).'),
+    ).toBeInTheDocument();
   });
 });
