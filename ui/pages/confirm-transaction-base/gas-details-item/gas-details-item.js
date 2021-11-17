@@ -81,7 +81,7 @@ const GasDetailsItem = ({
         </div>
       }
       detailTotal={
-        <div className="gas-details-item__currency-container">
+        <div className="gas-details-item__currency-container gas-details-item__detail-total">
           <HeartBeat />
           <UserPreferencedCurrencyDisplay
             type={PRIMARY}

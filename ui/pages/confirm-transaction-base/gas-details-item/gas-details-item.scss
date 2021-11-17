@@ -5,6 +5,7 @@
     font-size: 12px;
     color: $Grey-500;
     line-height: inherit;
+    word-break: normal;
   }
 
   &__gas-fee-warning {
@@ -17,5 +18,9 @@
 
   &__currency-container {
     position: relative;
+  }
+
+  &__detail-total {
+    margin-left: 4px;
   }
 }

@@ -13,6 +13,13 @@
     word-break: break-word;
   }
 
+  &__detail-values {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    width: 65%;
+  }
+
   .info-tooltip {
     display: inline-block;
     margin-inline-start: 4px;
