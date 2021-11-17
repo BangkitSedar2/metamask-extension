@@ -18,13 +18,15 @@ const StatusSlider = () => {
   const sliderValueNumeric = Math.round(statusValue * 10);
   return (
     <div className="status-slider">
-      <div
-        className="status-slider__arrow"
-        style={{
-          borderTopColor: GRADIENT_COLORS[sliderValueNumeric],
-          marginLeft: `${sliderValueNumeric * 10 - 10}%`,
-        }}
-      />
+      <div className="status-slider__arrow-border">
+        <div
+          className="status-slider__arrow"
+          style={{
+            borderTopColor: GRADIENT_COLORS[sliderValueNumeric],
+            marginLeft: `${sliderValueNumeric * 10}%`,
+          }}
+        />
+      </div>
       <div className="status-slider__line" />
       <div
         className="status-slider__label"
