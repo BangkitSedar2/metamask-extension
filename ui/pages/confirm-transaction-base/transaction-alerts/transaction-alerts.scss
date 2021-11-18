@@ -8,4 +8,10 @@
   & strong {
     font-weight: bold;
   }
+
+  &__pending-transactions {
+    & a {
+      color: $primary-1;
+    }
+  }
 }

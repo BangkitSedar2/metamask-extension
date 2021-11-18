@@ -333,6 +333,9 @@
   "cancelPopoverTitle": {
     "message": "Cancel transaction"
   },
+  "cancelSpeedUp": {
+    "message": "cancel or speed up a tranaction."
+  },
   "cancellationGasFee": {
     "message": "Cancellation Gas Fee"
   },
@@ -1304,6 +1307,9 @@
   },
   "learmMoreAboutGas": {
     "message": "Want to $1 about gas?"
+  },
+  "learnCancelSpeeedup": {
+    "message": "Learn how to $1"
   },
   "learnMore": {
     "message": "learn more"

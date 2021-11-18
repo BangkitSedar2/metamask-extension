@@ -17,15 +17,28 @@ const LowPriorityMessage = () => {
       {pendingTransactions?.length > 0 && (
         <ActionableMessage
           message={
-            <>
+            <div className="transaction-alerts__pending-transactions">
               <strong>
                 <I18nValue
                   messageKey="pendingTransaction"
                   options={[pendingTransactions?.length]}
                 />
               </strong>{' '}
-              <I18nValue messageKey="pendingTransactionInfo" />
-            </>
+              <I18nValue messageKey="pendingTransactionInfo" />{' '}
+              <I18nValue
+                messageKey="learnCancelSpeeedup"
+                options={[
+                  <a
+                    key="cancelSpeedUpInfo"
+                    href="https://metamask.zendesk.com/hc/en-us/articles/360015489251-How-to-speed-up-or-cancel-a-pending-transaction"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <I18nValue messageKey="cancelSpeedUp" />
+                  </a>,
+                ]}
+              />
+            </div>
           }
           useIcon
           iconFillColor="#f8c000"
