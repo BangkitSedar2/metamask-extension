@@ -22,19 +22,24 @@ const NetworkStatus = () => {
         <I18nValue messageKey="networkStatus" />
       </Typography>
       <div className="network-status__info">
-        <div className="network-status__info-field">
-          <span className="network-status__info-field-data">
-            {gasFeeEstimates?.estimatedBaseFee} GWEI
+        <div className="network-status__info__field">
+          <span className="network-status__info__field-data">
+            {gasFeeEstimates?.estimatedBaseFee &&
+              `${gasFeeEstimates?.estimatedBaseFee} GWEI`}
           </span>
-          <span className="network-status__info-field-label">Base fee</span>
+          <span className="network-status__info__field-label">Base fee</span>
         </div>
-        <div className="network-status__info-separator" />
-        <div className="network-status__info-field network-status__info-field__priorityfee">
-          <span className="network-status__info-field-data">0.5 - 22 GWEI</span>
-          <span className="network-status__info-field-label">Priority fee</span>
+        <div className="network-status__info__separator" />
+        <div className="network-status__info__field network-status__info__field--priority-fee">
+          <span className="network-status__info__field-data">
+            0.5 - 22 GWEI
+          </span>
+          <span className="network-status__info__field-label">
+            Priority fee
+          </span>
         </div>
-        <div className="network-status__info-separator" />
-        <div className="network-status__info-field">
+        <div className="network-status__info__separator" />
+        <div className="network-status__info__field">
           <StatusSlider />
         </div>
       </div>

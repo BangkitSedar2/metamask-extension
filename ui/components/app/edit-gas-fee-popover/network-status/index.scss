@@ -8,19 +8,19 @@
     display: flex;
     align-items: center;
 
-    &-separator {
+    &__separator {
       border-left: 1px solid $ui-2;
       height: 65%;
     }
 
-    &-field {
+    &__field {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       width: 30%;
 
-      &__priorityfee {
+      &--priority-fee {
         width: 40%;
       }
 

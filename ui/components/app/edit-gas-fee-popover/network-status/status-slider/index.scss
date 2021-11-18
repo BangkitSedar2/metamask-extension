@@ -19,13 +19,24 @@
     margin-top: 4px;
   }
 
+  &__arrow-border {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white;
+    position: relative;
+    margin-bottom: -2px;
+  }
+
   &__arrow {
     width: 0;
     height: 0;
-    align-self: baseline;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 8px solid #f00;
-    margin-left: -10px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid black;
+    position: absolute;
+    bottom: 3px;
+    left: -5px;
   }
 }

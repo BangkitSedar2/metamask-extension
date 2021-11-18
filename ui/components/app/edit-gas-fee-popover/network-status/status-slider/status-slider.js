@@ -2,7 +2,7 @@ import React from 'react';
 
 import I18nValue from '../../../../ui/i18n-value';
 
-const GradientColors = [
+const GRADIENT_COLORS = [
   '#037DD6',
   '#1876C8',
   '#2D70BA',
@@ -27,17 +27,19 @@ const StatusSlider = () => {
 
   return (
     <div className="status-slider">
-      <div
-        className="status-slider__arrow"
-        style={{
-          borderTopColor: GradientColors[sliderValueNumeric],
-          marginLeft: `${sliderValueNumeric * 10 - 10}%`,
-        }}
-      />
+      <div className="status-slider__arrow-border">
+        <div
+          className="status-slider__arrow"
+          style={{
+            borderTopColor: GRADIENT_COLORS[sliderValueNumeric],
+            marginLeft: `${sliderValueNumeric * 10}%`,
+          }}
+        />
+      </div>
       <div className="status-slider__line" />
       <div
         className="status-slider__label"
-        style={{ color: GradientColors[sliderValueNumeric] }}
+        style={{ color: GRADIENT_COLORS[sliderValueNumeric] }}
       >
         <I18nValue messageKey={statusLabel} />
       </div>
