@@ -8,7 +8,7 @@ import ActionableMessage from '../../../components/ui/actionable-message/actiona
 import ErrorMessage from '../../../components/ui/error-message';
 import I18nValue from '../../../components/ui/i18n-value';
 
-const LowPriorityMessage = () => {
+const TransactionAlerts = () => {
   const { balanceError, estimateUsed } = useGasFeeContext();
   const pendingTransactions = useSelector(submittedPendingTransactionsSelector);
 
@@ -70,4 +70,4 @@ const LowPriorityMessage = () => {
   );
 };
 
-export default LowPriorityMessage;
+export default TransactionAlerts;
