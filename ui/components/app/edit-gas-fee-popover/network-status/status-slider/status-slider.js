@@ -1,5 +1,7 @@
 import React from 'react';
 
+import I18nValue from '../../../../ui/i18n-value';
+
 const GradientColors = [
   '#037DD6',
   '#1876C8',
@@ -14,8 +16,15 @@ const GradientColors = [
 ];
 
 const StatusSlider = () => {
+  // todo: value below to be replaced with dynamic values from api once it is available
+  // corresponding test cases also to be added
   const statusValue = 0.5;
   const sliderValueNumeric = Math.round(statusValue * 10);
+
+  let statusLabel = 'stable';
+  if (statusValue <= 0.33) statusLabel = 'notBusy';
+  else if (statusValue > 0.66) statusLabel = 'busy';
+
   return (
     <div className="status-slider">
       <div
@@ -30,7 +39,7 @@ const StatusSlider = () => {
         className="status-slider__label"
         style={{ color: GradientColors[sliderValueNumeric] }}
       >
-        {statusValue <= 0.5 ? 'Stable' : 'Unstable'}
+        <I18nValue messageKey={statusLabel} />
       </div>
     </div>
   );

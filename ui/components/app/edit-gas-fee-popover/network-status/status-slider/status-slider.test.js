@@ -1,14 +1,14 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 
-import { renderWithProvider } from '../../../../../test/jest';
-import { ETH } from '../../../../helpers/constants/common';
-import { GasFeeContextProvider } from '../../../../contexts/gasFee';
-import configureStore from '../../../../store/store';
+import { renderWithProvider } from '../../../../../../test/jest';
+import { ETH } from '../../../../../helpers/constants/common';
+import { GasFeeContextProvider } from '../../../../../contexts/gasFee';
+import configureStore from '../../../../../store/store';
 
-import NetworkStatus from './network-status';
+import StatusSlider from './status-slider';
 
-jest.mock('../../../../store/actions', () => ({
+jest.mock('../../../../../store/actions', () => ({
   disconnectGasFeeEstimatePoller: jest.fn(),
   getGasFeeEstimatesAndStartPolling: jest
     .fn()
@@ -18,10 +18,6 @@ jest.mock('../../../../store/actions', () => ({
     .fn()
     .mockImplementation(() => Promise.resolve('unknown')),
 }));
-
-const MOCK_FEE_ESTIMATE = {
-  estimatedBaseFee: '.000005',
-};
 
 const renderComponent = () => {
   const store = configureStore({
@@ -36,30 +32,20 @@ const renderComponent = () => {
         },
       },
       selectedAddress: '0xAddress',
-      featureFlags: { advancedInlineGas: true },
-      gasFeeEstimates: MOCK_FEE_ESTIMATE,
     },
   });
 
   return renderWithProvider(
     <GasFeeContextProvider>
-      <NetworkStatus />
+      <StatusSlider />
     </GasFeeContextProvider>,
     store,
   );
 };
 
 describe('NetworkStatus', () => {
-  it('should renders labels', () => {
+  it('should renders stable for statusValue > 0.33 and <= 0.66', () => {
     renderComponent();
-    expect(screen.queryByText('Base fee')).toBeInTheDocument();
-    expect(screen.queryByText('Priority fee')).toBeInTheDocument();
-  });
-
-  it('should renders current base fee value', () => {
-    renderComponent();
-    expect(
-      screen.queryByText(`${MOCK_FEE_ESTIMATE.estimatedBaseFee} GWEI`),
-    ).toBeInTheDocument();
+    expect(screen.queryByText('Stable')).toBeInTheDocument();
   });
 });

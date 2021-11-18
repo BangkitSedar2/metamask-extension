@@ -303,6 +303,9 @@
   "builtAroundTheWorld": {
     "message": "MetaMask is designed and built around the world."
   },
+  "busy": {
+    "message": "Busy"
+  },
   "buy": {
     "message": "Buy"
   },
@@ -1667,6 +1670,9 @@
   "nonceFieldHeading": {
     "message": "Custom Nonce"
   },
+  "notBusy": {
+    "message": "Not busy"
+  },
   "notCurrentAccount": {
     "message": "Is this the correct account? It's different from the currently selected account in your wallet"
   },
@@ -2349,6 +2355,9 @@
   },
   "spendLimitTooLarge": {
     "message": "Spend limit too large"
+  },
+  "stable": {
+    "message": "Stable"
   },
   "stateLogError": {
     "message": "Error in retrieving state logs."
